@@ -1,0 +1,187 @@
+.products {
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.products__header {
+  padding: var(--section-padding) 0 var(--space-12);
+}
+
+/* Horizontal scroll */
+.products__scroll-container {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.products__track {
+  display: flex;
+  gap: var(--space-6);
+  padding: 0 var(--container-padding) var(--space-24);
+  width: max-content;
+  align-items: center;
+  height: 100%;
+}
+
+/* Product card */
+.product-card {
+  width: clamp(320px, 28vw, 420px);
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  position: relative;
+  cursor: default;
+  transition: border-color 0.4s var(--ease-smooth);
+  flex-shrink: 0;
+}
+
+.product-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Glow */
+.product-card__glow {
+  position: absolute;
+  top: -60%;
+  right: -30%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-smooth);
+}
+
+.product-card:hover .product-card__glow {
+  opacity: 0.22;
+}
+
+/* Badge */
+.product-card__badge {
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-5);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-full);
+  border: 1px solid;
+}
+
+/* Shirt visual area */
+.product-card__visual {
+  aspect-ratio: 3/3.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  position: relative;
+}
+
+.product-card__shirt-svg {
+  width: 70%;
+  height: auto;
+  animation: floatSlow 6s ease-in-out infinite;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+  transition: transform 0.4s var(--ease-smooth);
+}
+
+.product-card:hover .product-card__shirt-svg {
+  transform: scale(1.05) translateY(-6px);
+}
+
+/* Info */
+.product-card__info {
+  padding: var(--space-6) var(--space-6) var(--space-8);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.product-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+.product-card__desc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.product-card__fabrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-5);
+}
+
+.product-card__fabric {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.6rem;
+  letter-spacing: 0.05em;
+}
+
+.product-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.product-card__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.product-card__meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.product-card__meta-value {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.product-card__meta-divider {
+  width: 1px;
+  height: 30px;
+  background: var(--border-subtle);
+}
+
+@media (max-width: 768px) {
+  .products__scroll-container {
+    height: auto;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+  .products__track {
+    height: auto;
+    padding: var(--space-4) var(--container-padding) var(--space-12);
+  }
+  .product-card {
+    width: 85vw;
+    max-width: 360px;
+  }
+}

@@ -1,0 +1,43 @@
+.marquee-root {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.marquee-root::before,
+.marquee-root::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee-root::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary), transparent);
+}
+
+.marquee-root::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary), transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll var(--marquee-speed, 40s) linear infinite var(--marquee-direction, normal);
+}
+
+.marquee-track--pausable:hover {
+  animation-play-state: paused;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}

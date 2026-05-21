@@ -1,0 +1,184 @@
+.factory {
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Capability counters */
+.factory__caps {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-16);
+  padding: var(--space-8);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-2xl);
+}
+
+.factory__cap-item {
+  text-align: center;
+  padding: var(--space-4) 0;
+  position: relative;
+}
+
+.factory__cap-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: 0;
+  bottom: 20%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--border-light), transparent);
+}
+
+.factory__cap-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.factory__cap-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* Departments */
+.factory__dept-heading {
+  margin-bottom: var(--space-8);
+  color: var(--text-secondary);
+}
+
+.factory__dept-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+.factory__dept-card {
+  padding: var(--space-6);
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.factory__dept-card:hover {
+  background: var(--bg-glass);
+  border-color: var(--border-light);
+  transform: translateY(-4px);
+}
+
+.factory__dept-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.factory__dept-name {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.factory__dept-workers {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.factory__dept-num {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--accent-blue);
+  line-height: 1;
+}
+
+.factory__dept-worker-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.factory__dept-note {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Certifications */
+.factory__certs {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8) var(--space-10);
+}
+
+.factory__certs-heading {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-6);
+}
+
+.factory__certs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.factory__cert-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  background: rgba(0, 240, 255, 0.04);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.factory__cert-badge:hover {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.2);
+  color: var(--accent-blue);
+}
+
+.factory__cert-icon {
+  color: var(--accent-blue);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1200px) {
+  .factory__caps { grid-template-columns: repeat(3, 1fr); }
+  .factory__dept-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .factory__caps { grid-template-columns: repeat(2, 1fr); }
+  .factory__dept-grid { grid-template-columns: 1fr; }
+}
