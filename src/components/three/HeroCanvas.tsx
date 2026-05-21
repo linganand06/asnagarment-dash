@@ -24,8 +24,6 @@ export const HeroCanvas = () => {
           enableZoom={false}
           enablePan={false}
           enableRotate={false}
-          autoRotate
-          autoRotateSpeed={0.2}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 3}
         />

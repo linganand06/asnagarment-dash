@@ -63,57 +63,63 @@ export const Hero = () => {
       <div className="hero__grid" aria-hidden="true" />
 
       {/* Content */}
-      <div className="hero__content container">
-        {/* Label */}
-        <div className="hero__label">
-          <span className="accent-dot" />
-          <span>Premium Wholesale Manufacturing</span>
-          <span className="hero__label-badge">ISO 9001</span>
+      <div className="hero__content">
+        
+        {/* Left Column (Text & CTAs) */}
+        <div className="hero__content-left">
+          {/* Label */}
+          <div className="hero__label">
+            <span className="accent-dot" />
+            <span>Premium Wholesale Manufacturing</span>
+            <span className="hero__label-badge">ISO 9001</span>
+          </div>
+
+          {/* Headline */}
+          <h1 className="hero__headline" ref={headlineRef}>
+            <span className="hero__headline-line">Manufacturing</span>
+            <span className="hero__headline-line hero__headline-line--accent">
+              Premium Apparel
+            </span>
+            <span className="hero__headline-line">at Scale</span>
+          </h1>
+
+          {/* Sub */}
+          <p className="hero__sub">
+            Where global fashion brands manufacture excellence.
+            <br className="hide-mobile" />
+            Bulk t-shirts · Custom printing · Corporate uniforms · Export quality
+          </p>
+
+          {/* CTAs */}
+          <div className="hero__cta-group">
+            <a
+              href="#cta"
+              className="btn btn-primary btn-lg hero__cta-primary"
+              onClick={(e) => { e.preventDefault(); document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' }) }}
+            >
+              <span>Start Manufacturing</span>
+              <ChevronRight size={18} />
+            </a>
+            <a
+              href="#products"
+              className="btn btn-ghost btn-lg"
+              onClick={(e) => { e.preventDefault(); document.querySelector('#products')?.scrollIntoView({ behavior: 'smooth' }) }}
+            >
+              View Capabilities
+            </a>
+          </div>
         </div>
 
-        {/* Headline */}
-        <h1 className="hero__headline" ref={headlineRef}>
-          <span className="hero__headline-line">Manufacturing</span>
-          <span className="hero__headline-line hero__headline-line--accent">
-            Premium Apparel
-          </span>
-          <span className="hero__headline-line">at Scale</span>
-        </h1>
-
-        {/* Sub */}
-        <p className="hero__sub">
-          Where global fashion brands manufacture excellence.
-          <br className="hide-mobile" />
-          Bulk t-shirts · Custom printing · Corporate uniforms · Export quality
-        </p>
-
-        {/* CTAs */}
-        <div className="hero__cta-group">
-          <a
-            href="#cta"
-            className="btn btn-primary btn-xl hero__cta-primary"
-            onClick={(e) => { e.preventDefault(); document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' }) }}
-          >
-            <span>Start Manufacturing</span>
-            <ChevronRight size={18} />
-          </a>
-          <a
-            href="#products"
-            className="btn btn-ghost btn-xl"
-            onClick={(e) => { e.preventDefault(); document.querySelector('#products')?.scrollIntoView({ behavior: 'smooth' }) }}
-          >
-            View Capabilities
-          </a>
-        </div>
-
-        {/* Stats */}
-        <div className="hero__stats">
-          {stats.map((stat, i) => (
-            <div key={i} className="hero__stat">
-              <div className="hero__stat-value">{stat.value}</div>
-              <div className="hero__stat-label">{stat.label}</div>
-            </div>
-          ))}
+        {/* Right Column (Stats) */}
+        <div className="hero__content-right">
+          <div className="hero__stats">
+            {stats.map((stat, i) => (
+              <div key={i} className="hero__stat">
+                <div className="hero__stat-value">{stat.value}</div>
+                <div className="hero__stat-label">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

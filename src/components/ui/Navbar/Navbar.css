@@ -29,30 +29,20 @@
 /* Logo */
 .navbar__logo {
   display: flex;
-  flex-direction: column;
-  line-height: 1;
-  gap: 1px;
+  align-items: center;
   text-decoration: none;
 }
 
-.navbar__logo-main {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.4rem;
-  letter-spacing: 0.08em;
-  color: var(--text-primary);
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.navbar__logo-image {
+  height: 48px;
+  width: auto;
+  border-radius: 50%; /* Makes it oval if rectangular, circle if square */
+  object-fit: cover;
+  transition: transform 0.3s var(--ease-smooth);
 }
 
-.navbar__logo-sub {
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+.navbar__logo:hover .navbar__logo-image {
+  transform: scale(1.05);
 }
 
 /* Links */

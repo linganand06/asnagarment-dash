@@ -34,8 +34,7 @@ export const Navbar = () => {
       <div className="navbar__inner">
         {/* Logo */}
         <a href="#" className="navbar__logo" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
-          <span className="navbar__logo-main">ASNA</span>
-          <span className="navbar__logo-sub">GARMENTS</span>
+          <img src="/images/logo.png" alt="Asana Garments Logo" className="navbar__logo-image" />
         </a>
 
         {/* Desktop Nav */}

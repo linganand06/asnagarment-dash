@@ -19,6 +19,7 @@ const products = [
     color: '#00F0FF',
     bgGradient: 'linear-gradient(135deg, #001020, #002040)',
     shirtColor: '#1a1a2e',
+    image: '/images/oversize.png',
     desc: 'Premium drop-shoulder construction with reinforced neck tape. Available in 300+ GSM weights.',
   },
   {
@@ -31,6 +32,7 @@ const products = [
     color: '#8B5CF6',
     bgGradient: 'linear-gradient(135deg, #100820, #180C30)',
     shirtColor: '#2d1b69',
+    image: '/images/polo.png',
     desc: 'Classic two-button placket with ribbed collar. Corporate branding via embroidery or woven label.',
   },
   {
@@ -43,6 +45,7 @@ const products = [
     color: '#DC143C',
     bgGradient: 'linear-gradient(135deg, #1a0008, #2d000f)',
     shirtColor: '#4a0011',
+    image: '/images/hoodie.png',
     desc: 'Heavyweight premium fleece with kangaroo pocket and adjustable drawstring. Retail-quality finish.',
   },
   {
@@ -55,6 +58,7 @@ const products = [
     color: '#C9A84C',
     bgGradient: 'linear-gradient(135deg, #0f0c00, #1a1400)',
     shirtColor: '#2a2000',
+    image: '/images/corporate.png',
     desc: 'Complete uniform solutions — shirts, trousers, vests. Industry-specific variants for hospitality, healthcare, retail.',
   },
   {
@@ -67,6 +71,7 @@ const products = [
     color: '#00F0FF',
     bgGradient: 'linear-gradient(135deg, #001520, #002030)',
     shirtColor: '#003040',
+    image: '/images/ov-ts.jpg',
     desc: 'Moisture-wicking performance wear with sublimation printing capability. Gym, sports, yoga, cycling.',
   },
   {
@@ -79,6 +84,7 @@ const products = [
     color: '#8B5CF6',
     bgGradient: 'linear-gradient(135deg, #0a0514, #110824)',
     shirtColor: '#1e0b3d',
+    image: '/images/oversize.png',
     desc: 'Trend-forward silhouettes with premium washed finishes. Limited-edition capsule collection ready.',
   },
 ]
@@ -143,7 +149,7 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => {
 
       {/* Shirt visual */}
       <div className="product-card__visual">
-        <TShirtSVG shirtColor={product.shirtColor} accentColor={product.color} />
+        <img src={product.image} alt={product.name} className="product-card__image" />
       </div>
 
       {/* Info */}

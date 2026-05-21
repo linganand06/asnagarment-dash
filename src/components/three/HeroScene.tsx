@@ -101,16 +101,12 @@ const TShirtMesh = () => {
   useFrame((state) => {
     if (!groupRef.current) return
     const time = state.clock.elapsedTime
-    // Continuous 360-degree rotation on the Y-axis
+    // Pure 360-degree rotation on the Y-axis, no wobbling!
     groupRef.current.rotation.y = time * 0.5
-    // Keep the gentle floating up and down
-    groupRef.current.position.y = Math.sin(time * 0.8) * 0.15
-    // Very slight tilt
-    groupRef.current.rotation.z = Math.sin(time * 0.4) * 0.02
   })
 
   return (
-    <group ref={groupRef} position={[0, -1, 0]} scale={5.5}>
+    <group ref={groupRef} position={[2.2, 0.2, 0]} scale={7.5}>
       <Center>
         <primitive object={scene} />
       </Center>
@@ -229,7 +225,6 @@ export const HeroScene = () => {
       <FabricWave />
       <ParticleField />
       <TShirtMesh />
-      <FloatingOrbs />
 
       {/* Stars */}
       <Stars
