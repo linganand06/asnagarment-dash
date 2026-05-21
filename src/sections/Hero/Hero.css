@@ -53,8 +53,8 @@
   padding-top: calc(var(--navbar-height) + 4rem);
   padding-bottom: 6rem;
   width: 100%;
-  padding-left: 2vw;
-  padding-right: 2vw;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -240,13 +240,60 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .hero__content {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding-top: calc(var(--navbar-height) + 2rem);
+    padding-bottom: 6rem;
+  }
+
+  .hero__content-left {
+    max-width: 100%;
+    margin-bottom: auto; /* Pushes everything else down */
+  }
+
+  .hero__content-right {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding-right: 0;
+    margin-top: auto; /* Pushes itself to the bottom */
+    padding-top: 40vh; /* Ensures a massive gap for the 3D model in the middle */
+  }
+
   .hero__stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: var(--space-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__content-right {
+    padding-top: 35vh;
+  }
+
+  .hero__headline {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
   }
 
   .hero__cta-group {
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
+  }
+
+  .hero__cta-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero__stats {
+    gap: var(--space-4);
   }
 }

@@ -1,4 +1,4 @@
-import { useRef, useMemo, useEffect } from 'react'
+import { useRef, useState, useEffect, useMemo } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { MeshDistortMaterial, Float, Stars, useGLTF, Center } from '@react-three/drei'
 import * as THREE from 'three'
@@ -94,19 +94,41 @@ const ParticleField = () => {
 /* ---- Custom 3D Model ---- */
 const TShirtMesh = () => {
   const groupRef = useRef<THREE.Group>(null)
-  
-  // This looks for 'tshirt.glb' inside the public/models/ folder
   const { scene } = useGLTF('/models/tshirt.glb')
+  
+  const [isMobile, setIsMobile] = useState(false)
+  const [isTablet, setIsTablet] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768)
+      setIsTablet(window.innerWidth <= 1024 && window.innerWidth > 768)
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useFrame((state) => {
     if (!groupRef.current) return
     const time = state.clock.elapsedTime
-    // Pure 360-degree rotation on the Y-axis, no wobbling!
     groupRef.current.rotation.y = time * 0.5
   })
 
+  // Dynamic positioning and scaling based on screen size
+  let pos: [number, number, number] = [2.2, 0.2, 0]
+  let modelScale = 7.5
+
+  if (isMobile) {
+    pos = [0, -0.5, 0]
+    modelScale = 4.5
+  } else if (isTablet) {
+    pos = [0, -0.2, 0]
+    modelScale = 6.0
+  }
+
   return (
-    <group ref={groupRef} position={[2.2, 0.2, 0]} scale={7.5}>
+    <group ref={groupRef} position={pos} scale={modelScale}>
       <Center>
         <primitive object={scene} />
       </Center>
