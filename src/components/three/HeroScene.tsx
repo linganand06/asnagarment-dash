@@ -109,10 +109,28 @@ const TShirtMesh = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  const startTime = useRef<number | null>(null)
+
   useFrame((state) => {
     if (!groupRef.current) return
-    const time = state.clock.elapsedTime
-    groupRef.current.rotation.y = time * 0.5
+    
+    if (startTime.current === null) {
+      startTime.current = state.clock.elapsedTime
+    }
+    const localTime = state.clock.elapsedTime - startTime.current
+    
+    // Constant rotation
+    groupRef.current.rotation.y = localTime * 0.5
+    
+    // Time-based intro animation (wait 2.2s for the cinematic loader, then last 1.5s)
+    const progress = Math.min(Math.max((localTime - 2.2) / 1.5, 0), 1)
+    
+    // Smooth ease-out cubic function
+    const ease = 1 - Math.pow(1 - progress, 3)
+    
+    // Apply animation
+    groupRef.current.scale.setScalar(ease * modelScale)
+    groupRef.current.position.set(pos[0], -5 + (pos[1] + 5) * ease, pos[2])
   })
 
   // Dynamic positioning and scaling based on screen size
@@ -128,7 +146,7 @@ const TShirtMesh = () => {
   }
 
   return (
-    <group ref={groupRef} position={pos} scale={modelScale}>
+    <group ref={groupRef} position={[pos[0], -5, pos[2]]} scale={0}>
       <Center>
         <primitive object={scene} />
       </Center>

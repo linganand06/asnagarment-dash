@@ -34,9 +34,9 @@
 }
 
 .navbar__logo-image {
-  height: 48px;
-  width: auto;
-  border-radius: 50%; /* Makes it oval if rectangular, circle if square */
+  height: 60px;
+  width: 120px;
+  border-radius: 60%;
   object-fit: cover;
   transition: transform 0.3s var(--ease-smooth);
 }
@@ -161,15 +161,29 @@
   transform: translateX(0);
   opacity: 1;
   transition: color 0.3s var(--ease-smooth),
-              transform 0.5s var(--ease-out-expo),
-              opacity 0.5s var(--ease-out-expo);
+    transform 0.5s var(--ease-out-expo),
+    opacity 0.5s var(--ease-out-expo);
 }
 
-.navbar__mobile--open li:nth-child(1) .navbar__mobile-link { transition-delay: 0.05s; }
-.navbar__mobile--open li:nth-child(2) .navbar__mobile-link { transition-delay: 0.1s; }
-.navbar__mobile--open li:nth-child(3) .navbar__mobile-link { transition-delay: 0.15s; }
-.navbar__mobile--open li:nth-child(4) .navbar__mobile-link { transition-delay: 0.2s; }
-.navbar__mobile--open li:nth-child(5) .navbar__mobile-link { transition-delay: 0.25s; }
+.navbar__mobile--open li:nth-child(1) .navbar__mobile-link {
+  transition-delay: 0.05s;
+}
+
+.navbar__mobile--open li:nth-child(2) .navbar__mobile-link {
+  transition-delay: 0.1s;
+}
+
+.navbar__mobile--open li:nth-child(3) .navbar__mobile-link {
+  transition-delay: 0.15s;
+}
+
+.navbar__mobile--open li:nth-child(4) .navbar__mobile-link {
+  transition-delay: 0.2s;
+}
+
+.navbar__mobile--open li:nth-child(5) .navbar__mobile-link {
+  transition-delay: 0.25s;
+}
 
 .navbar__mobile-link:hover {
   color: var(--text-primary);
@@ -185,9 +199,23 @@
 
 /* Responsive */
 @media (max-width: 900px) {
-  .navbar__links { display: none; }
-  .navbar__cta { display: none; }
-  .navbar__hamburger { display: flex; }
-  .navbar__mobile { display: block; }
-  .navbar--open .navbar__mobile { display: block; }
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__mobile {
+    display: block;
+  }
+
+  .navbar--open .navbar__mobile {
+    display: block;
+  }
 }
